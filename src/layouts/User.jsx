@@ -7,7 +7,7 @@ const User = () => {
   return (
     <>
       <Header />
-      <main className="container-root">
+      <main className="container-root text-white">
         <Outlet />
       </main>
     </>

@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <header className="h-full bg-white">
+    <header className="h-full bg-white border-b text-black">
       <div className="container-root flex justify-between items-center px-6 h-16">
         <Link to={"/"}>
           <img src={Logo} alt="app logo" width={100} height={40} />
