@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
 
+//components
+import Header from "@/components/Header";
+
 const User = () => {
   return (
-    <div>
-      <Outlet />
-    </div>
+    <>
+      <Header />
+      <main className="container-root">
+        <Outlet />
+      </main>
+    </>
   );
 };
 
