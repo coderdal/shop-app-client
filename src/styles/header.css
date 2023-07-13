@@ -1,0 +1,7 @@
+.nav-link-desktop {
+  @apply hover:opacity-70 transition-opacity;
+}
+
+.nav-link-mobile {
+  @apply h-10 my-1 py-1.5 pl-4 font-semibold hover:bg-slate-100 rounded flex items-center;
+}
