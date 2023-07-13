@@ -2,7 +2,7 @@ import Logo from "@/assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
 
 import { FaUserAlt, FaShoppingBag } from "react-icons/fa";
-import { IoMdMenu } from "react-icons/io";
+import { IoMdMenu, IoMdClose } from "react-icons/io";
 
 import MobileMenu from "@/components/Header/MobileMenu";
 
@@ -44,7 +44,7 @@ const Header = () => {
         {/* Mobile menu button */}
         <nav className="hidden max-sm:flex">
           <button onClick={toggleMenu}>
-            <IoMdMenu size={26} />
+            {isMenu ? <IoMdClose size={26} /> : <IoMdMenu size={26} />}
           </button>
         </nav>
       </div>
