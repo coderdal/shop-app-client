@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import PostCard from "@/components/Home/Card";
 
 const RecentPosts = () => {

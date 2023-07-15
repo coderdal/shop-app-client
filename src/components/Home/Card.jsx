@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const PostCard = ({ title, image, alt = "", path = "" }) => {
   return (
@@ -11,6 +12,13 @@ const PostCard = ({ title, image, alt = "", path = "" }) => {
       </div>
     </Link>
   );
+};
+
+PostCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  path: PropTypes.string,
 };
 
 export default PostCard;
