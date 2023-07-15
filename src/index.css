@@ -6,4 +6,8 @@
   .container-root {
     @apply max-w-6xl mx-auto;
   }
+
+  .input-bar {
+    @apply block w-full mt-1 py-1 rounded-md border-gray-300 shadow-sm outline-none text-sm text-slate-900;
+  }
 }
