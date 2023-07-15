@@ -21,6 +21,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/muhammederdal/"
             target="_blank"
             rel="noreferrer"
+            className="hover:opacity-80 transition-opacity"
           >
             <BsLinkedin size={24} />
           </a>
@@ -28,6 +29,7 @@ const Footer = () => {
             href="https://github.com/coderdal"
             target="_blank"
             rel="noreferrer"
+            className="hover:opacity-80 transition-opacity"
           >
             <BsGithub size={24} />
           </a>
