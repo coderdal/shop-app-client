@@ -46,6 +46,12 @@ const Categories = () => {
       path: "/",
       title: "Fridge",
     },
+    {
+      image:
+        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MK0U3?wid=890&hei=890&fmt=jpeg&qlt=90&.v=1646446502337",
+      path: "/",
+      title: "Displays",
+    },
   ];
 
   return (
