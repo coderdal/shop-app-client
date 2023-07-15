@@ -4,7 +4,7 @@ import { BiHide } from "react-icons/bi";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +32,7 @@ const Login = () => {
     <main className="w-full h-full flex items-center justify-center">
       <div className="flex justify-center items-center min-h-screen ">
         <div className="max-w-md w-[440px] h-[310px] p-6 bg-white rounded-lg shadow-md flex flex-col items-center max-sm:w-full">
-          <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Signup</h2>
 
           <form
             onSubmit={handleSubmit}
@@ -81,13 +81,13 @@ const Login = () => {
               type="submit"
               className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Login
+              Sign Up
             </button>
           </form>
           <p className="w-full text-center py-4 text-sm hover:opacity-90">
-            <Link to={"/signup"}>
-              Don&apos;t have an account yet?{" "}
-              <span className="font-bold text-indigo-700">Sign up</span>
+            <Link to={"/login"}>
+              Already have an account ?{" "}
+              <span className="font-bold text-indigo-700">Login</span>
             </Link>
           </p>
         </div>
@@ -96,4 +96,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
