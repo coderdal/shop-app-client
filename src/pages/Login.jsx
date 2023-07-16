@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -46,19 +48,14 @@ const Login = () => {
       return;
     }
 
-    fetch("http://localhost:3000/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    })
-      .then(async (res) => {
-        const json = await res.json();
+    axios
+      .post("http://localhost:3000/auth/login", { username, password })
+      .then((response) => {
+        const data = response.data;
 
-        if (res.status === 200) {
-          localStorage.setItem("accessToken", json.accessToken);
-          localStorage.setItem("refreshToken", json.refreshToken);
+        if (response.status === 200) {
+          localStorage.setItem("accessToken", data.accessToken);
+          localStorage.setItem("refreshToken", data.refreshToken);
 
           toast.success("Login successful!", {
             autoClose: 2300,
@@ -69,47 +66,23 @@ const Login = () => {
             navigate("/");
           }, 2300);
 
-          return json;
-        }
-
-        if (res.status === 400) {
-          toast.error(json.error, {
-            autoClose: 2300,
-            hideProgressBar: true,
-          });
-
-          return json;
-        }
-
-        if (res.status === 401) {
-          toast.error(json.error, {
-            autoClose: 2300,
-            hideProgressBar: true,
-          });
-
-          return json;
-        }
-
-        if (res.status === 404) {
-          toast.error(json.error, {
-            autoClose: 2300,
-            hideProgressBar: true,
-          });
-
-          return json;
-        }
-
-        if (res.status === 500) {
-          toast.error(json.error, {
-            autoClose: 2300,
-            hideProgressBar: true,
-          });
-
-          return json;
+          return data;
         }
       })
-      .then(() => {
-        // console.log(result);
+      .catch((error) => {
+        if (
+          error.response.status === 400 ||
+          error.response.status === 500 ||
+          error.response.status === 401 ||
+          error.response.status === 404
+        ) {
+          toast.error(error.response.data.error, {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          return error.response.data;
+        }
       });
   };
 

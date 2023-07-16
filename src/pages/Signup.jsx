@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -46,17 +48,12 @@ const SignUp = () => {
       return;
     }
 
-    fetch("http://localhost:3000/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    })
-      .then(async (res) => {
-        const json = await res.json();
+    axios
+      .post("http://localhost:3000/auth/signup", { username, password })
+      .then((response) => {
+        const data = response.data;
 
-        if (res.status === 201) {
+        if (response.status === 201) {
           toast.success("Signed up successfully!", {
             autoClose: 2300,
             hideProgressBar: true,
@@ -66,29 +63,18 @@ const SignUp = () => {
             navigate("/login");
           }, 2300);
 
-          return json;
-        }
-
-        if (res.status === 400) {
-          toast.error(json.error, {
-            autoClose: 2300,
-            hideProgressBar: true,
-          });
-
-          return json;
-        }
-
-        if (res.status === 500) {
-          toast.error(json.error, {
-            autoClose: 2300,
-            hideProgressBar: true,
-          });
-
-          return json;
+          return data;
         }
       })
-      .then(() => {
-        // console.log(result);
+      .catch((error) => {
+        if (error.response.status === 400 || error.response.status === 500) {
+          toast.error(error.response.data.error, {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          return error.response.data;
+        }
       });
   };
 
