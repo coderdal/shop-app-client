@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 // import { Link } from "react-router-dom";
 
 const ProductCard = ({ name, price, imageUrl, description }) => {
@@ -20,6 +21,13 @@ const ProductCard = ({ name, price, imageUrl, description }) => {
       </div>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
 
 export default ProductCard;
