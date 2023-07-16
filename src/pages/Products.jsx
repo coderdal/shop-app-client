@@ -51,7 +51,7 @@ const Products = () => {
 
   return (
     <section className="px-2 py-6 mt-6 flex max-xl:flex-col max-xl:gap-4">
-      <div className="bg-white text-slate-950 px-4 py-4 rounded-md w-64 flex flex-col self-start max-xl:mx-auto">
+      <aside className="bg-white text-slate-950 px-4 py-4 rounded-md w-64 flex flex-col self-start max-xl:mx-auto">
         <h2 className="font-semibold text-center text-xl border-b pb-2">
           Categories
         </h2>
@@ -72,7 +72,7 @@ const Products = () => {
             Category 4
           </Link>
         </nav>
-      </div>
+      </aside>
       <div className="flex flex-wrap gap-4 justify-center">
         {mockData.map((item, key) => (
           <ProductCard
