@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ProductCard = ({ name, price, imageUrl, description }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow text-gray-900">
-      <div className="w-60 h-60 p-4">
+      <div className="w-52 h-52 p-4">
         <img src={imageUrl} alt="product image" className="w-full h-full" />
       </div>
       <div className="flex flex-col px-4 pt-3">
@@ -25,7 +25,7 @@ const ProductCard = ({ name, price, imageUrl, description }) => {
 
 ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
   description: PropTypes.string,
 };

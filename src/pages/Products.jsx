@@ -1,4 +1,5 @@
 import ProductCard from "@/components/Home/ProductCard";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const mockData = [
@@ -49,8 +50,30 @@ const Products = () => {
   ];
 
   return (
-    <section className="px-2 py-6 mt-6">
-      <div className="flex flex-wrap gap-4 justify-center mt-4">
+    <section className="px-2 py-6 mt-6 flex max-xl:flex-col max-xl:gap-4">
+      <div className="bg-white text-slate-950 px-4 py-4 rounded-md w-64 flex flex-col self-start max-xl:mx-auto">
+        <h2 className="font-semibold text-center text-xl border-b pb-2">
+          Categories
+        </h2>
+        <nav className="mt-2 flex flex-col gap-y-1 font-medium text-slate-800">
+          <Link to={""} className="hover:bg-slate-100 rounded p-2">
+            Category 1
+          </Link>
+          <Link to={""} className="hover:bg-slate-100 rounded p-2">
+            Category 2
+          </Link>
+          <Link to={""} className="hover:bg-slate-100 rounded p-2">
+            Category 3
+          </Link>
+          <Link to={""} className="hover:bg-slate-100 rounded p-2">
+            Category 4
+          </Link>
+          <Link to={""} className="hover:bg-slate-100 rounded p-2">
+            Category 4
+          </Link>
+        </nav>
+      </div>
+      <div className="flex flex-wrap gap-4 justify-center">
         {mockData.map((item, key) => (
           <ProductCard
             key={key}
