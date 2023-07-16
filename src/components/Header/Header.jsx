@@ -26,9 +26,6 @@ const Header = () => {
 
         {/* Desktop navbar */}
         <nav className="h-6 flex gap-5 font-medium max-sm:hidden">
-          <NavLink to={"/categories"} className="nav-link-desktop">
-            Categories
-          </NavLink>
           <NavLink to={"/products"} className="">
             Products
           </NavLink>

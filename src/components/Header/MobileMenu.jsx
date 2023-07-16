@@ -5,9 +5,6 @@ import { FaUserAlt, FaShoppingBag } from "react-icons/fa";
 const MobileMenu = () => {
   return (
     <nav className="container-root px-6 py-5 flex-col border-t hidden max-sm:flex">
-      <NavLink to={"/categories"} className="nav-link-mobile">
-        Categories
-      </NavLink>
       <NavLink to={"/products"} className="nav-link-mobile">
         Products
       </NavLink>
