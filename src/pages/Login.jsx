@@ -4,6 +4,10 @@ import { BiHide } from "react-icons/bi";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,11 +21,96 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // cr
-    console.log("username:", username);
-    console.log("Password:", password);
+
+    if (!username || !password) {
+      toast.error("Make sure you enter your username or password.", {
+        autoClose: 2300,
+        hideProgressBar: true,
+      });
+      return;
+    }
+
+    // Check if username and password meet the minimum length requirements
+    if (username.length < 3 || password.length < 6) {
+      toast.error(
+        "Username must be at least 3 characters long, and password must be at least 6 characters long.",
+        {
+          autoClose: 2300,
+          hideProgressBar: true,
+        }
+      );
+      return;
+    }
+
+    fetch("http://localhost:3000/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then(async (res) => {
+        const json = await res.json();
+
+        if (res.status === 200) {
+          localStorage.setItem("accessToken", json.accessToken);
+          localStorage.setItem("refreshToken", json.refreshToken);
+
+          toast.success("Login successful!", {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          setTimeout(() => {
+            navigate("/");
+          }, 2300);
+
+          return json;
+        }
+
+        if (res.status === 400) {
+          toast.error(json.error, {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          return json;
+        }
+
+        if (res.status === 401) {
+          toast.error(json.error, {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          return json;
+        }
+
+        if (res.status === 404) {
+          toast.error(json.error, {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          return json;
+        }
+
+        if (res.status === 500) {
+          toast.error(json.error, {
+            autoClose: 2300,
+            hideProgressBar: true,
+          });
+
+          return json;
+        }
+      })
+      .then(() => {
+        // console.log(result);
+      });
   };
 
   const togglePasswordVisibility = () => {

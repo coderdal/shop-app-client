@@ -87,8 +87,8 @@ const SignUp = () => {
           return json;
         }
       })
-      .then((result) => {
-        console.log(result);
+      .then(() => {
+        // console.log(result);
       });
   };
 
